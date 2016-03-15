@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
 
 from django.contrib.auth.decorators import login_required
@@ -14,9 +14,9 @@ def find_friends(request):
         users = User.objects.filter(username__icontains=request.GET["q"])
     else:
         users = None
-    return render_to_response("friends/find_friends.html", {
+    return render(request, template_name="friends/find_friends.html", context={
         "users": users,
-    }, context_instance=RequestContext(request))
+    })
 
 
 @login_required
