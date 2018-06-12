@@ -22,7 +22,7 @@ class Friendship(models.Model):
     """
 
     to_user = models.ForeignKey(User, related_name="friends", on_delete=models.CASCADE)
-    from_user = models.ForeignKey(User, related_name="_unused_", on_delete=models.CASCADE)
+    from_user = models.ForeignKey(User, related_name="_unused", on_delete=models.CASCADE)
     # @@@ relationship types
     added = models.DateField(default=datetime.date.today)
 
