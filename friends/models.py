@@ -21,8 +21,8 @@ class Friendship(models.Model):
     have both agreed to the association.
     """
 
-    to_user = models.ForeignKey(User, related_name="friends")
-    from_user = models.ForeignKey(User, related_name="_unused_")
+    to_user = models.ForeignKey(User, related_name="friends", on_delete=models.CASCADE)
+    from_user = models.ForeignKey(User, related_name="_unused_", on_delete=models.CASCADE)
     # @@@ relationship types
     added = models.DateField(default=datetime.date.today)
 
@@ -53,8 +53,8 @@ class FriendshipInvitation(models.Model):
     associated as friends.
     """
 
-    from_user = models.ForeignKey(User, related_name="invitations_from")
-    to_user = models.ForeignKey(User, related_name="invitations_to")
+    from_user = models.ForeignKey(User, related_name="invitations_from", on_delete=models.CASCADE)
+    to_user = models.ForeignKey(User, related_name="invitations_to", on_delete=models.CASCADE)
     message = models.TextField()
     sent = models.DateField(default=datetime.date.today)
     status = models.IntegerField(choices=INVITE_STATUS)
@@ -88,8 +88,8 @@ class FriendshipInvitationHistory(models.Model):
     History for friendship invitations
     """
 
-    from_user = models.ForeignKey(User, related_name="invitations_from_history")
-    to_user = models.ForeignKey(User, related_name="invitations_to_history")
+    from_user = models.ForeignKey(User, related_name="invitations_from_history", on_delete=models.CASCADE)
+    to_user = models.ForeignKey(User, related_name="invitations_to_history", on_delete=models.CASCADE)
     message = models.TextField()
     sent = models.DateField(default=datetime.date.today)
     status = models.IntegerField(choices=INVITE_STATUS)
