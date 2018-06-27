@@ -14,11 +14,11 @@ class FriendshipManager(models.Manager):
     def friends_for_user(self, user):
         friends = []
         qs = self.filter(Q(from_user=user) | Q(to_user=user)).select_related('from_user', 'to_user')
-        for friendship in qs:
-            if friendship.from_user == user:
-                friends.append({"friend": friendship.to_user, "friendship": friendship})
+        for elem in qs:
+            if elem.from_user == user:
+                friends.append({"friend": elem.to_user, "friendship": elem})
             else:
-                friends.append({"friend": friendship.from_user, "friendship": friendship})
+                friends.append({"friend": elem.from_user, "friendship": elem})
         return friends
 
     def are_friends(self, user1, user2):
