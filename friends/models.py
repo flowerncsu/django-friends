@@ -88,8 +88,10 @@ class FriendshipInvitationHistory(models.Model):
     History for friendship invitations
     """
 
-    from_user = models.ForeignKey(User, related_name="invitations_from_history", on_delete=models.CASCADE)
-    to_user = models.ForeignKey(User, related_name="invitations_to_history", on_delete=models.CASCADE)
+    from_user = models.ForeignKey(
+        User, related_name="invitations_from_history", on_delete=models.CASCADE)
+    to_user = models.ForeignKey(
+        User, related_name="invitations_to_history", on_delete=models.CASCADE)
     message = models.TextField()
     sent = models.DateField(default=datetime.date.today)
     status = models.IntegerField(choices=INVITE_STATUS)
