@@ -5,9 +5,10 @@ setup(
     name = "django-friends",
     version = "0.2.dev1",
     description = "friendship, contact and invitation management for the Django web framework",
-    author = "James Tauber",
-    author_email = "jtauber@jtauber.com",
-    url = "http://github.com/jtauber/django-friends/",
+    author = "Pinax Team",
+    author_email = "team@pinaxprojects.com",
+    url = "http://github.com/pinax/django-friends/",
+    license="MIT",
     packages = find_packages(),
     classifiers = [
         "Development Status :: 3 - Alpha",
